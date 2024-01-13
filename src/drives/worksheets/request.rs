@@ -18,7 +18,7 @@ impl WorksheetsApiClient {
     get!(
         doc: "List WorksheetCollection",
         name: list_worksheets,
-        path: "/worksheets"
+        path: "/workbook/worksheets"
     );
     get!(
         doc: "Get the number of the resource",
