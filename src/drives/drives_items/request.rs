@@ -10,6 +10,9 @@ resource_api_client!(
 );
 
 impl DrivesItemsApiClient {
+    api_client_link!(last_modified_by_user, LastModifiedByUserApiClient);
+    api_client_link!(created_by_user, CreatedByUserApiClient);
+
     post!(
         doc: "Create new navigation property to items for drives",
         name: create_items,
@@ -23,15 +26,12 @@ impl DrivesItemsApiClient {
     );
     get!(
         doc: "Get the number of the resource",
-        name: get_items_count,
+        name: items,
         path: "/items/$count"
     );
 }
 
 impl DrivesItemsIdApiClient {
-    api_client_link!(last_modified_by_user, LastModifiedByUserApiClient);
-    api_client_link!(created_by_user, CreatedByUserApiClient);
-
     delete!(
         doc: "Delete a DriveItem",
         name: delete_items,
@@ -82,7 +82,7 @@ impl DrivesItemsIdApiClient {
     );
     get!(
         doc: "Get the number of the resource",
-        name: get_item_activity_stats_count,
+        name: item_activity_stats,
         path: "/items/{{RID}}/analytics/itemActivityStats/$count"
     );
     delete!(
@@ -119,7 +119,7 @@ impl DrivesItemsIdApiClient {
     );
     get!(
         doc: "Get the number of the resource",
-        name: get_activities_count,
+        name: activities,
         path: "/items/{{RID}}/analytics/itemActivityStats/{{id}}/activities/$count",
         params: item_activity_stat_id
     );
@@ -196,7 +196,7 @@ impl DrivesItemsIdApiClient {
     );
     get!(
         doc: "Get the number of the resource",
-        name: get_children_count,
+        name: children,
         path: "/items/{{RID}}/children/$count"
     );
     get!(
@@ -303,7 +303,7 @@ impl DrivesItemsIdApiClient {
     );
     get!(
         doc: "Get the number of the resource",
-        name: get_permissions_count,
+        name: permissions,
         path: "/items/{{RID}}/permissions/$count"
     );
     delete!(
@@ -345,6 +345,22 @@ impl DrivesItemsIdApiClient {
         body: true
     );
     get!(
+        doc: "Get retentionLabel from drives",
+        name: get_retention_label,
+        path: "/items/{{RID}}/retentionLabel"
+    );
+    delete!(
+        doc: "driveItem: removeRetentionLabel",
+        name: delete_retention_label,
+        path: "/items/{{RID}}/retentionLabel"
+    );
+    patch!(
+        doc: "driveItem: setRetentionLabel",
+        name: update_retention_label,
+        path: "/items/{{RID}}/retentionLabel",
+        body: true
+    );
+    get!(
         doc: "Invoke function search",
         name: search,
         path: "/items/{{RID}}/search(q='{{id}}')",
@@ -363,7 +379,7 @@ impl DrivesItemsIdApiClient {
     );
     get!(
         doc: "Get the number of the resource",
-        name: get_subscriptions_count,
+        name: subscriptions,
         path: "/items/{{RID}}/subscriptions/$count"
     );
     delete!(
@@ -404,7 +420,7 @@ impl DrivesItemsIdApiClient {
     );
     get!(
         doc: "Get the number of the resource",
-        name: get_thumbnails_count,
+        name: thumbnails,
         path: "/items/{{RID}}/thumbnails/$count"
     );
     delete!(
@@ -450,7 +466,7 @@ impl DrivesItemsIdApiClient {
     );
     get!(
         doc: "Get the number of the resource",
-        name: get_versions_count,
+        name: versions,
         path: "/items/{{RID}}/versions/$count"
     );
     delete!(
