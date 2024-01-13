@@ -1,7 +1,7 @@
 // GENERATED CODE
 
 use crate::api_default_imports::*;
-use crate::drives::{CreatedByUserApiClient, LastModifiedByUserApiClient};
+use crate::drives::{CreatedByUserApiClient, LastModifiedByUserApiClient, WorkbookApiClient, WorksheetsApiClient, WorksheetsIdApiClient};
 
 resource_api_client!(
     DrivesItemsApiClient,
@@ -12,6 +12,9 @@ resource_api_client!(
 impl DrivesItemsApiClient {
     api_client_link!(last_modified_by_user, LastModifiedByUserApiClient);
     api_client_link!(created_by_user, CreatedByUserApiClient);
+    api_client_link!(workbook, WorkbookApiClient);
+    api_client_link!(worksheets, WorksheetsApiClient);
+    api_client_link!(worksheet, WorksheetsIdApiClient);
 
     post!(
         doc: "Create new navigation property to items for drives",
