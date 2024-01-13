@@ -2003,7 +2003,8 @@ pub fn get_write_configuration(resource_identity: ResourceIdentity) -> WriteConf
 			.unwrap(),
 		ResourceIdentity::Workbook => WriteConfiguration::second_level_builder(ResourceIdentity::Drives, resource_identity)
 			.trim_path_start("/drives/{drive-id}/items/{driveItem-id}")
-			.filter_path(vec!["worksheets", "tables", "functions", "names", "comments"])
+			//.filter_path(vec!["worksheets", "tables", "functions", "names", "comments"])
+			.filter_path(vec!["tables", "functions", "names", "comments"])
 			.build()
 			.unwrap(),
 		ResourceIdentity::Worksheets => WriteConfiguration::second_level_builder(ResourceIdentity::Drives, resource_identity)
