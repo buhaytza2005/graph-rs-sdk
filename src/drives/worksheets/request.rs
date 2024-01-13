@@ -23,7 +23,7 @@ impl WorksheetsApiClient {
     get!(
         doc: "Get the number of the resource",
         name: worksheets,
-        path: "/worksheets/$count"
+        path: "/workbook/worksheets/$count"
     );
     post!(
         doc: "Invoke action add",
