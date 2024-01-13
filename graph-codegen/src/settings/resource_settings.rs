@@ -1990,7 +1990,15 @@ pub fn get_write_configuration(resource_identity: ResourceIdentity) -> WriteConf
 			.unwrap(),
 		ResourceIdentity::DrivesItems => WriteConfiguration::second_level_builder(ResourceIdentity::Drives, resource_identity)
 			.trim_path_start("/drives/{drive-id}")
+			.imports(vec!["crate::drives::{CreatedByUserApiClient, LastModifiedByUserApiClient, WorkbookApiClient, WorksheetsApiClient, WorksheetsIdApiClient}"])
 			.filter_path(vec!["workbook", "getActivitiesByInterval()", "createdByUser", "lastModifiedByUser"])
+			.api_client_links(vec![
+				ApiClientLinkSettings(Some("DrivesItemsIdApiClient"), vec![
+					ApiClientLink::Struct("workbook", "WorkbookApiClient"),
+					ApiClientLink::StructId("worksheets", "WorksheetsApiClient"),
+					ApiClientLink::Struct("worksheet", "WorksheetsIdApiClient"),
+				])
+			])
 			.build()
 			.unwrap(),
 		ResourceIdentity::Workbook => WriteConfiguration::second_level_builder(ResourceIdentity::Drives, resource_identity)
