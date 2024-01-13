@@ -35,6 +35,9 @@ impl DrivesItemsApiClient {
 }
 
 impl DrivesItemsIdApiClient {
+    api_client_link!(workbook, WorkbookApiClient);
+    api_client_link!(worksheets, WorksheetsApiClient);
+    api_client_link!(worksheet, WorksheetsIdApiClient);
     delete!(
         doc: "Delete a DriveItem",
         name: delete_items,
