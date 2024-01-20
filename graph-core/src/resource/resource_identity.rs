@@ -41,6 +41,7 @@ pub enum ResourceIdentity {
     Application,
     Applications,
     ApplicationTemplates,
+    Appointments,
     AppRoleAssignments,
     AssignmentPolicies,
     AssignmentRequests,
@@ -50,6 +51,7 @@ pub enum ResourceIdentity {
     AuthenticationMethodConfigurations,
     AuthenticationMethodsPolicy,
     Batch, // Specifically for $batch requests.
+    BookingBusinesses,
     Branding,
     Buckets,
     CalendarGroups,
