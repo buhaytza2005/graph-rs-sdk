@@ -1064,7 +1064,7 @@ impl ResourceSettings {
 				.unwrap(),
 			ResourceIdentity::Me => ResourceSettings::builder(path_name, ri)
 				.imports(vec!["crate::users::*", "crate::chats::*", "crate::agreement_acceptances::*",
-							  "crate::planner::*", "crate::oauth2_permission_grants::*", "crate::teams::*"])
+							  "crate::planner::*", "crate::oauth2_permission_grants::*", "crate::teams::*", "crate::solutions::*"])
 				.api_client_links(get_users_api_client_links(ri))
 				.build()
 				.unwrap(),
