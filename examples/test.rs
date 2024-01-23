@@ -5,8 +5,8 @@ use graph_core::resource::ResourceIdentity;
 
 fn main() {
 
+    OpenApi::write(get_write_configuration(ResourceIdentity::Users));
     OpenApi::write(get_write_configuration(ResourceIdentity::Solutions));
-    //OpenApi::write(get_write_configuration(ResourceIdentity::Users));
     let open_api = OpenApi::default();
 
     open_api.debug_path_contains("solutions")
