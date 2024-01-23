@@ -2165,6 +2165,10 @@ pub fn get_write_configuration(resource_identity: ResourceIdentity) -> WriteConf
 			.trim_path_start("/users/{user-id}")
 			.build()
 			.unwrap(),
+		ResourceIdentity::Solutions => WriteConfiguration::builder(resource_identity)
+			.filter_path(vec!["bookingBusinesses"])
+			.build()
+			.unwrap(),
 		ResourceIdentity::BookingBusinesses => WriteConfiguration::second_level_builder(ResourceIdentity::Solutions, resource_identity)
 			.trim_path_start("/solutions")
 			.build()
