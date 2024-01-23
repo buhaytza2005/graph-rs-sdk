@@ -1079,11 +1079,12 @@ impl ResourceSettings {
 				.build()
 				.unwrap(),
 			ResourceIdentity::Solutions => ResourceSettings::builder(path_name, ri)
-				.imports(vec!["crate::business::*"])
+				.imports(vec!["crate::solutions::*"])
 				.api_client_links(vec![
 					ApiClientLinkSettings(Some("SolutionsApiClient"),
 					vec![
-						ApiClientLink::StructId("business", "bookingBusinessIdApiClient")
+						ApiClientLink::StructId("business", "BookingBusinessIdApiClient"),
+						ApiClientLink::StructId("businesses", "BookingBusinessApiClient")
 
 				])])
 				.build()
