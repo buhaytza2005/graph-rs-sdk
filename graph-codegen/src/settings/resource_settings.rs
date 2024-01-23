@@ -2191,7 +2191,7 @@ pub fn get_write_configuration(resource_identity: ResourceIdentity) -> WriteConf
 			.children(vec![
 				get_write_configuration(ResourceIdentity::BookingBusinesses),
 			])
-			.filter_path(vec!["bookingBusinesses", "appointments", "virtualEvents"])
+			.filter_path(vec!["bookingBusinesses", "appointments", "virtualEvents", "bookingCurrencies"])
 			.build()
 			.unwrap(),
 		ResourceIdentity::BookingBusinesses => WriteConfiguration::second_level_builder(ResourceIdentity::Solutions, resource_identity)
