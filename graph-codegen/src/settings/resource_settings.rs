@@ -1068,6 +1068,15 @@ impl ResourceSettings {
 				.api_client_links(get_users_api_client_links(ri))
 				.build()
 				.unwrap(),
+			ResourceIdentity::Solutions => ResourceSettings::builder(path_name, ri)
+				.imports(vec![])
+				.api_client_links(vec![ApiClientLinkSettings(Some("SolutionsIdApiClient"), vec![
+						ApiClientLink::Struct("businesses", "bookingBusiness"),
+						ApiClientLink::StructId("business", "bookingBusinessIdApiClient")
+
+				])])
+				.build()
+				.unwrap(),
 			_ => ResourceSettings::default(path_name, ri),
 		}
     }
