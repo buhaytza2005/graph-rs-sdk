@@ -17,7 +17,6 @@ pub mod traits;
 /// Io utilities for creating directories and files.
 pub mod io_tools;
 
-#[allow(unused_imports)]
 pub(crate) mod internal {
     pub use crate::blocking::*;
     pub use crate::client::*;
