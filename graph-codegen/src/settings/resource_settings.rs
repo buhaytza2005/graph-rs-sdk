@@ -1180,6 +1180,8 @@ impl ResourceSettings {
 				.unwrap(),
 
 			ResourceIdentity::Solutions => ResourceSettings::builder(path_name, ri)
+				.build()
+				.unwrap(),
 
 			_ => ResourceSettings::default(path_name, ri),
 		}
