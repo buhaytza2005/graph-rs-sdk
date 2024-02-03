@@ -2680,7 +2680,7 @@ pub fn get_write_configuration(resource_identity: ResourceIdentity) -> WriteConf
 			.unwrap(),
 		ResourceIdentity::BookingBusinesses => WriteConfiguration::second_level_builder(ResourceIdentity::Solutions, resource_identity) 
 			.imports(vec!["crate::users::*"])
-			.trim_path_start("/solutions/bookingBusinesses/{id}")
+			.trim_path_start("/solutions/bookingBusinesses")
 			.build()
 			.unwrap(),
 		_ => WriteConfiguration::builder(resource_identity)
