@@ -2671,6 +2671,7 @@ pub fn get_write_configuration(resource_identity: ResourceIdentity) -> WriteConf
 			.build()
 			.unwrap(),
 		ResourceIdentity::Solutions => WriteConfiguration::builder(resource_identity)
+			.imports(vec!["crate::users::*"])
 			.filter_path(vec!["virtualEvents", "bookingBusinesses"])
 			.children(vec![
 				get_write_configuration(ResourceIdentity::BookingBusinesses),
@@ -2678,6 +2679,7 @@ pub fn get_write_configuration(resource_identity: ResourceIdentity) -> WriteConf
 			.build()
 			.unwrap(),
 		ResourceIdentity::BookingBusinesses => WriteConfiguration::second_level_builder(ResourceIdentity::Solutions, resource_identity) 
+			.imports(vec!["crate::users::*"])
 			.trim_path_start("/solutions/bookingBusinesses/{id}")
 			.build()
 			.unwrap(),
