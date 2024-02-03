@@ -2658,8 +2658,9 @@ pub fn get_write_configuration(resource_identity: ResourceIdentity) -> WriteConf
 			.trim_path_start("/users/{user-id}")
 			.build()
 			.unwrap(),
-		ResourceIdentity::Solutions => WriteConfiguration::builder(resource_identity)
+		ResourceIdentity::Solutions => WriteConfiguration::second_level_builder(ResourceIdentity::Users, resource_identity)
 			.filter_path(vec!["virtualEvents", "bookingBusinesses"])
+			.trim_path_start("/users/{user-id}")
 			.build()
 			.unwrap(),
 		_ => WriteConfiguration::builder(resource_identity)
