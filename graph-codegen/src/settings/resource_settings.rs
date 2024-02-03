@@ -1072,10 +1072,8 @@ impl ResourceSettings {
 			ResourceIdentity::BookingBusinesses => ResourceSettings::builder(path_name, ri)
 				.api_client_links(vec![
 					ApiClientLinkSettings(Some("BookingBusinessIdApiClient"), vec![
-						ApiClientLink::Struct("businesses", "BookingBusinessApiClient"),
 						ApiClientLink::StructId("business", "BookingBusinessIdApiClient"),
-						ApiClientLink::StructId("appointments", "AppointmentsApiClient"),
-						ApiClientLink::StructId("appointment", "AppointmentsIdApiClient"),
+						ApiClientLink::Struct("businesses", "BookingBusinessApiClient"),
 					])
 				])
 				.build()
@@ -1435,7 +1433,6 @@ fn get_users_api_client_links(resource_identity: ResourceIdentity) -> Vec<ApiCli
             ApiClientLink::Struct("mailbox_settings", "MailboxSettingsApiClient"),
             ApiClientLink::Struct("drive", "DefaultDriveApiClient"),
             ApiClientLink::Struct("solutions", "SolutionsApiClient"),
-            ApiClientLink::Struct("solution", "SolutionsIdApiClient"),
         ],
     )]
 }
