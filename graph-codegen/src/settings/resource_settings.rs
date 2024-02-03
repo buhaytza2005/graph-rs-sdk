@@ -1526,8 +1526,8 @@ fn get_users_api_client_links(resource_identity: ResourceIdentity) -> Vec<ApiCli
             ),
             ApiClientLink::Struct("mailbox_settings", "MailboxSettingsApiClient"),
             ApiClientLink::Struct("drive", "DefaultDriveApiClient"),
-	    ApiClientLink::Struct("solutions", "SolutionsApiClient"),
-	    ApiClientLink::Struct("solutions", "SolutionsIdApiClient"),
+            ApiClientLink::Struct("solutions", "SolutionsApiClient"),
+            ApiClientLink::Struct("solutions", "SolutionsIdApiClient"),
         ],
     )]
 }
@@ -2656,6 +2656,10 @@ pub fn get_write_configuration(resource_identity: ResourceIdentity) -> WriteConf
 		ResourceIdentity::MailFolders => WriteConfiguration::second_level_builder(ResourceIdentity::Users, resource_identity)
 			.filter_path(vec!["childFolders", "messages", "singleValueExtendedProperties", "multiValueExtendedProperties"])
 			.trim_path_start("/users/{user-id}")
+			.build()
+			.unwrap(),
+		ResourceIdentity::Solutions => WriteConfiguration::builder(resource_identity)
+			.filter_path(vec!["virtualEvents"])
 			.build()
 			.unwrap(),
 		_ => WriteConfiguration::builder(resource_identity)
