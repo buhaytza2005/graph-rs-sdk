@@ -2659,7 +2659,7 @@ pub fn get_write_configuration(resource_identity: ResourceIdentity) -> WriteConf
 			.build()
 			.unwrap(),
 		ResourceIdentity::Solutions => WriteConfiguration::builder(resource_identity)
-			.filter_path(vec!["virtualEvents"])
+			.filter_path(vec!["virtualEvents", "bookingBusinesses"])
 			.build()
 			.unwrap(),
 		_ => WriteConfiguration::builder(resource_identity)
