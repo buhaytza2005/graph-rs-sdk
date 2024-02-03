@@ -7,7 +7,6 @@ use crate::default_drive::*;
 use crate::oauth2_permission_grants::*;
 use crate::planner::*;
 use crate::users::*;
-//use crate::solutions::*;
 
 resource_api_client!(UsersApiClient, UsersIdApiClient, ResourceIdentity::Users);
 

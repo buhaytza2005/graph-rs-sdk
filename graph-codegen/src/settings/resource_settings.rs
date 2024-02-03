@@ -1538,8 +1538,8 @@ fn get_users_api_client_links(resource_identity: ResourceIdentity) -> Vec<ApiCli
             ),
             ApiClientLink::Struct("mailbox_settings", "MailboxSettingsApiClient"),
             ApiClientLink::Struct("drive", "DefaultDriveApiClient"),
-	    ApiClientLink::Struct("booking_businesses", "BookingBusinessIdApi"),
-	    ApiClientLink::Struct("booking_business", "BookingBusinessApi"),
+	    ApiClientLink::Struct("booking_businesses", "BookingBusinessApi"),
+	    ApiClientLink::Struct("booking_business", "BookingBusinessIdApi"),
         ],
     )]
 }
@@ -2672,7 +2672,7 @@ pub fn get_write_configuration(resource_identity: ResourceIdentity) -> WriteConf
 			.unwrap(),
 		ResourceIdentity::Solutions => WriteConfiguration::builder(resource_identity)
 			.imports(vec!["crate::users::*"])
-			.filter_path(vec!["virtualEvents", "bookingBusinesses"])
+			.filter_path(vec!["virtualEvents", "bookingBusinesses", "bookingCurrency"])
 			.children(vec![
 				get_write_configuration(ResourceIdentity::BookingBusinesses),
 			])
@@ -2680,7 +2680,7 @@ pub fn get_write_configuration(resource_identity: ResourceIdentity) -> WriteConf
 			.unwrap(),
 		ResourceIdentity::BookingBusinesses => WriteConfiguration::second_level_builder(ResourceIdentity::Solutions, resource_identity) 
 			.imports(vec!["crate::users::*"])
-			.trim_path_start("/solutions/bookingBusinesses")
+			.trim_path_start("/solutions")
 			.build()
 			.unwrap(),
 		_ => WriteConfiguration::builder(resource_identity)
