@@ -135,7 +135,6 @@ impl ResourceSettings {
 						)
 					],
 				},
-
 			ResourceIdentity::Calls =>
 				ResourceSettings {
 					path_name: path_name.into(),
@@ -230,7 +229,6 @@ impl ResourceSettings {
 				.build()
 				.unwrap(),
 
-
 			// Device App Management
 			ResourceIdentity::ManagedEBooks =>
 				ResourceSettings::builder(path_name, ri)
@@ -296,7 +294,6 @@ impl ResourceSettings {
 						),
 					]).build().unwrap(),
 
-
 			// Device Management
 			ResourceIdentity::DeviceManagement =>
 				ResourceSettings::builder(path_name, ri)
@@ -327,8 +324,6 @@ impl ResourceSettings {
 							]
 						),
 					]).build().unwrap(),
-
-
 			ResourceIdentity::Drives =>
 				ResourceSettings {
 					path_name: path_name.to_string(),
@@ -351,7 +346,6 @@ impl ResourceSettings {
 						])
 					],
 				},
-
 			ResourceIdentity::DrivesList =>
 				ResourceSettings {
 					path_name: path_name.to_string(),
@@ -490,7 +484,6 @@ impl ResourceSettings {
 				])
 				.build()
 				.unwrap(),
-
 			ResourceIdentity::Education => ResourceSettings::builder(path_name, ri)
 				.imports(vec!["crate::education::*"])
 				.api_client_links(vec![
@@ -1185,6 +1178,9 @@ impl ResourceSettings {
 				.api_client_links(get_users_api_client_links(ri))
 				.build()
 				.unwrap(),
+
+			ResourceIdentity::Solutions => ResourceSettings::builder(path_name, ri)
+
 			_ => ResourceSettings::default(path_name, ri),
 		}
     }
@@ -1528,6 +1524,8 @@ fn get_users_api_client_links(resource_identity: ResourceIdentity) -> Vec<ApiCli
             ),
             ApiClientLink::Struct("mailbox_settings", "MailboxSettingsApiClient"),
             ApiClientLink::Struct("drive", "DefaultDriveApiClient"),
+	    ApiClientLink::Struct("solutions", "SolutionsApiClient"),
+	    ApiClientLink::Struct("solutions", "SolutionsIdApiClient"),
         ],
     )]
 }
