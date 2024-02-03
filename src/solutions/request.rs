@@ -1,8 +1,8 @@
 // GENERATED CODE
 
 use crate::api_default_imports::*;
-use crate::solutions::*;
 use crate::users::*;
+use crate::solutions::*;
 
 resource_api_client!(SolutionsApiClient, ResourceIdentity::Solutions);
 
