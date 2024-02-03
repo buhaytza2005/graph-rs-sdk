@@ -1,8 +1,9 @@
 // GENERATED CODE
 
 use crate::api_default_imports::*;
-use crate::users::*;
 use crate::solutions::*;
+use crate::users::*;
+
 resource_api_client!(SolutionsApiClient, ResourceIdentity::Solutions);
 
 impl SolutionsApiClient {api_client_link!(booking_businesses, BookingBusinessesApiClient);
