@@ -1538,8 +1538,8 @@ fn get_users_api_client_links(resource_identity: ResourceIdentity) -> Vec<ApiCli
             ),
             ApiClientLink::Struct("mailbox_settings", "MailboxSettingsApiClient"),
             ApiClientLink::Struct("drive", "DefaultDriveApiClient"),
-	    ApiClientLink::Struct("booking_businesses", "BookingBusinessIdApi"),
-	    ApiClientLink::Struct("booking_business", "BookingBusinessApi"),
+            ApiClientLink::Struct("booking_businesses", "BookingBusinessIdApi"),
+            ApiClientLink::Struct("booking_business", "BookingBusinessApi"),
         ],
     )]
 }
