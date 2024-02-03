@@ -1180,6 +1180,18 @@ impl ResourceSettings {
 				.unwrap(),
 
 			ResourceIdentity::Solutions => ResourceSettings::builder(path_name, ri)
+				.imports(vec!["crate::users::*"])
+				.api_client_links(vec![
+					ApiClientLinkSettings(Some("SolutionsApiClient"), vec![
+						ApiClientLink::Struct("booking_businesses", "BookingBusinessesApiClient"),
+						ApiClientLink::StructId("booking_business", "BookingBusinessesIdApiClient"),
+
+					])
+				])
+				.build()
+				.unwrap(),
+			ResourceIdentity::BookingBusinesses => ResourceSettings::builder(path_name, ri)
+				.imports(vec!["crate::users::*"])
 				.build()
 				.unwrap(),
 
@@ -1526,8 +1538,8 @@ fn get_users_api_client_links(resource_identity: ResourceIdentity) -> Vec<ApiCli
             ),
             ApiClientLink::Struct("mailbox_settings", "MailboxSettingsApiClient"),
             ApiClientLink::Struct("drive", "DefaultDriveApiClient"),
-            ApiClientLink::Struct("solutions", "SolutionsApiClient"),
-            ApiClientLink::Struct("solutions", "SolutionsIdApiClient"),
+	    ApiClientLink::Struct("booking_businesses", "BookingBusinessIdApi"),
+	    ApiClientLink::Struct("booking_business", "BookingBusinessApi"),
         ],
     )]
 }
@@ -2658,9 +2670,15 @@ pub fn get_write_configuration(resource_identity: ResourceIdentity) -> WriteConf
 			.trim_path_start("/users/{user-id}")
 			.build()
 			.unwrap(),
-		ResourceIdentity::Solutions => WriteConfiguration::second_level_builder(ResourceIdentity::Users, resource_identity)
+		ResourceIdentity::Solutions => WriteConfiguration::builder(resource_identity)
 			.filter_path(vec!["virtualEvents", "bookingBusinesses"])
-			.trim_path_start("/users/{user-id}")
+			.children(vec![
+				get_write_configuration(ResourceIdentity::BookingBusinesses),
+			])
+			.build()
+			.unwrap(),
+		ResourceIdentity::BookingBusinesses => WriteConfiguration::second_level_builder(ResourceIdentity::Solutions, resource_identity) 
+			.trim_path_start("/solutions/bookingBusinesses/{id}")
 			.build()
 			.unwrap(),
 		_ => WriteConfiguration::builder(resource_identity)
