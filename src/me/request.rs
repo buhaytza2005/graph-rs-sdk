@@ -8,6 +8,7 @@ use crate::oauth2_permission_grants::*;
 use crate::planner::*;
 use crate::teams::*;
 use crate::users::*;
+use crate::solutions::*;
 
 resource_api_client!(MeApiClient, ResourceIdentity::Me);
 
